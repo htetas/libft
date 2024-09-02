@@ -19,9 +19,11 @@ void	*ft_bzero(void *s, size_t n)
 
 	i = 0;
 	str = (unsigned char *)s;
+	if (n == 0)
+		return (NULL);
 	while (i < n)
 	{
-		str[i] = '\0';
+		str[i] = 0;
 		i++;
 	}
 	return (str);
