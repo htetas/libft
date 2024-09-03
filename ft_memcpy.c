@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoe <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: hsoe <hsoe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 11:46:24 by hsoe              #+#    #+#             */
-/*   Updated: 2024/08/28 12:59:00 by hsoe             ###   ########.fr       */
+/*   Updated: 2024/09/03 11:48:05 by hsoe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*sstr;
 	unsigned char	*dstr;
 
+	if (!dest && !src)
+		return (NULL);
 	i = 0;
 	sstr = (unsigned char *)src;
 	dstr = (unsigned char *)dest;

@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoe <hsoe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 12:14:02 by hsoe              #+#    #+#             */
-/*   Updated: 2024/09/03 11:48:11 by hsoe             ###   ########.fr       */
+/*   Created: 2024/09/03 13:13:36 by hsoe              #+#    #+#             */
+/*   Updated: 2024/09/03 13:29:16 by hsoe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_lstsize(t_list *lst)
 {
-	unsigned char	*dstr;
-	unsigned char	*sstr;
-	size_t			i;
+	int	i;
 
-	if (!dest && !src)
-		return (NULL);
-	dstr = (unsigned char *)dest;
-	sstr = (unsigned char *)src;
-	i = -1;
-	if (dstr > sstr)
+	i = 0;
+	while (lst)
 	{
-		while (n)
-		{
-			dstr[n - 1] = sstr[n - 1];
-			n--;
-		}
+		lst = lst->next;
+		i++;
 	}
-	else
-	{
-		while (++i < n)
-			dstr[i] = sstr[i];
-	}
-	return (dest);
+	return (i);
 }

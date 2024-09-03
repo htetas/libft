@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoe <hsoe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 12:14:02 by hsoe              #+#    #+#             */
-/*   Updated: 2024/09/03 11:48:11 by hsoe             ###   ########.fr       */
+/*   Created: 2024/09/03 15:20:44 by hsoe              #+#    #+#             */
+/*   Updated: 2024/09/03 15:59:27 by hsoe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	unsigned char	*dstr;
-	unsigned char	*sstr;
-	size_t			i;
+	t_list	*new;
+	t_list	*tmp;
+	t_list	*prev;
 
-	if (!dest && !src)
+	if (!f || !del || !lst)
 		return (NULL);
-	dstr = (unsigned char *)dest;
-	sstr = (unsigned char *)src;
-	i = -1;
-	if (dstr > sstr)
+	new = ft_lstnew(f(lst->content));
+	if (new == NULL)
+		return (NULL);
+	tmp = lst->next;
+	del(lst->content);
+	free(lst);
+	while (tmp)
 	{
-		while (n)
-		{
-			dstr[n - 1] = sstr[n - 1];
-			n--;
-		}
+		if (f(tmp) == NULL)
+			return (NULL);
+		ft_lstadd_back(&new, f(tmp));
+		del(tmp->content);
+		prev = tmp;
+		tmp = tmp->next;
+		free(prev);
 	}
-	else
-	{
-		while (++i < n)
-			dstr[i] = sstr[i];
-	}
-	return (dest);
+	return (begin);
 }
