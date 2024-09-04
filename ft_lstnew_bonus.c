@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoe <hsoe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 10:08:40 by hsoe              #+#    #+#             */
-/*   Updated: 2024/09/04 14:17:05 by hsoe             ###   ########.fr       */
+/*   Created: 2024/09/03 12:52:15 by hsoe              #+#    #+#             */
+/*   Updated: 2024/09/03 13:04:14 by hsoe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_islower(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	return (0);
-}
+#include "libft.h"
 
-int	ft_isupper(int c)
+t_list	*ft_lstnew(void *content)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
-}
+	t_list	*nlst;
 
-int	ft_isalpha(int c)
-{
-	if (ft_islower(c) == 1 || ft_isupper(c) == 1)
-		return (1);
-	return (0);
+	nlst = (t_list *)malloc(sizeof(t_list));
+	if (nlst == NULL)
+		return (NULL);
+	nlst->content = content;
+	nlst->next = NULL;
+	return (nlst);
 }

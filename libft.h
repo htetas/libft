@@ -6,7 +6,7 @@
 /*   By: hsoe <hsoe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 10:07:11 by hsoe              #+#    #+#             */
-/*   Updated: 2024/09/03 15:30:44 by hsoe             ###   ########.fr       */
+/*   Updated: 2024/09/04 12:36:19 by hsoe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_list
 	void				*content;
 	struct s_list		*next;
 }	t_list;
+
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);

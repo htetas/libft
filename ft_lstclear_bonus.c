@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoe <hsoe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 10:08:40 by hsoe              #+#    #+#             */
-/*   Updated: 2024/09/04 14:17:05 by hsoe             ###   ########.fr       */
+/*   Created: 2024/09/03 14:30:52 by hsoe              #+#    #+#             */
+/*   Updated: 2024/09/04 11:36:40 by hsoe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_islower(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	return (0);
-}
+#include "libft.h"
 
-int	ft_isupper(int c)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
-}
+	t_list	*tmp;
 
-int	ft_isalpha(int c)
-{
-	if (ft_islower(c) == 1 || ft_isupper(c) == 1)
-		return (1);
-	return (0);
+	if (!del)
+		return ;
+	if (lst)
+	{
+		while (*lst)
+		{
+			tmp = (*lst)->next;
+			del((*lst)->content);
+			free(*lst);
+			*lst = tmp;
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: hsoe <hsoe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 09:48:52 by hsoe              #+#    #+#             */
-/*   Updated: 2024/09/03 15:18:50 by hsoe             ###   ########.fr       */
+/*   Updated: 2024/09/04 13:09:00 by hsoe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	l = len;
 	if (ft_strlen(s) - start < len && start < ft_strlen(s))
 		l = ft_strlen(s) - start;
-	else if (start > ft_strlen(s))
+	else if (start >= ft_strlen(s))
 		l = 0;
 	d = (char *)ft_calloc((l + 1), sizeof(char));
 	if (d == NULL)

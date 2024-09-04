@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoe <hsoe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 10:08:40 by hsoe              #+#    #+#             */
-/*   Updated: 2024/09/04 14:17:05 by hsoe             ###   ########.fr       */
+/*   Created: 2024/09/03 13:13:36 by hsoe              #+#    #+#             */
+/*   Updated: 2024/09/03 13:29:16 by hsoe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_islower(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	return (0);
-}
+#include "libft.h"
 
-int	ft_isupper(int c)
+int	ft_lstsize(t_list *lst)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
-}
+	int	i;
 
-int	ft_isalpha(int c)
-{
-	if (ft_islower(c) == 1 || ft_isupper(c) == 1)
-		return (1);
-	return (0);
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

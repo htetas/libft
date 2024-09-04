@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoe <hsoe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 10:08:40 by hsoe              #+#    #+#             */
-/*   Updated: 2024/09/04 14:17:05 by hsoe             ###   ########.fr       */
+/*   Created: 2024/09/03 15:20:44 by hsoe              #+#    #+#             */
+/*   Updated: 2024/09/04 13:57:47 by hsoe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_islower(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	return (0);
-}
+#include "libft.h"
 
-int	ft_isupper(int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
-}
+	t_list	*new;
+	t_list	*node;
 
-int	ft_isalpha(int c)
-{
-	if (ft_islower(c) == 1 || ft_isupper(c) == 1)
-		return (1);
-	return (0);
+	if (!lst || !f || !del)
+		return (NULL);
+	new = NULL;
+	node = NULL;
+	while (lst)
+	{
+		node = ft_lstnew(f(lst->content));
+		if (node == NULL)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new, node);
+		lst = lst->next;
+	}
+	return (new);
 }
