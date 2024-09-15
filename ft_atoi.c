@@ -19,26 +19,24 @@ int	ft_isspace(int c)
 
 int	ft_atoi(const char *nptr)
 {
-	char	*tmp;
 	int		nb;
 	int		i;
 	int		sign;
 
-	tmp = (char *)nptr;
 	nb = 0;
 	i = 0;
 	sign = 1;
-	while (ft_isspace(tmp[i]) == 1)
+	while (ft_isspace(nptr[i]) == 1)
 		i++;
-	if (tmp[i] == '-' || tmp[i] == '+')
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (tmp[i] == '-')
+		if (nptr[i] == '-')
 			sign = -1;
 		i++;
 	}
-	while (tmp[i] >= '0' && tmp[i] <= '9')
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		nb = (nb * 10) + (tmp[i] - '0');
+		nb = (nb * 10) + (nptr[i] - '0');
 		i++;
 	}
 	return (nb * sign);
