@@ -40,7 +40,7 @@ int	ft_wordsize(char const *s, char const c, size_t n)
 
 void	ft_free(char **s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != NULL)
