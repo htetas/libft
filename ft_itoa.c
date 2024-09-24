@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_findlen(int n)
+size_t	ft_nbrlen(int n, int base)
 {
 	size_t			i;
 	unsigned int	nb;
@@ -25,9 +25,9 @@ size_t	ft_findlen(int n)
 	}
 	else
 		nb = (unsigned int)n;
-	while (nb >= 10)
+	while (nb >= (unsigned int)base)
 	{
-		nb = nb / 10;
+		nb = nb / (unsigned int)base;
 		i++;
 	}
 	return (i);
@@ -39,7 +39,7 @@ char	*ft_itoa(int n)
 	unsigned int	nb;
 	size_t			i;
 
-	i = ft_findlen(n);
+	i = ft_nbrlen(n, 10);
 	d = (char *)malloc(sizeof(char) * (i + 1));
 	if (d == NULL)
 		return (NULL);
